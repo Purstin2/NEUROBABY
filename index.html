@@ -117,23 +117,15 @@
 
         /* Stack da Oferta */
         .offer-stack {
-            background: linear-gradient(180deg, #161b22 0%, #0b0e14 100%);
-            border: 2px solid var(--accent-purple);
-            padding: 25px;
-            border-radius: 24px;
+            padding: 0;
             margin: 40px 0;
         }
         .kit-mockup {
             width: 100%;
             max-width: 400px;
-            margin: 20px auto;
+            margin: 20px auto 30px;
             border-radius: 16px;
-            border: 2px dashed var(--accent-purple);
-            padding: 20px;
-            background: rgba(168, 85, 247, 0.05);
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 14px;
+            overflow: hidden;
         }
         .kit-mockup img {
             width: 100%;
@@ -141,37 +133,103 @@
             display: block;
         }
         .offer-item { 
-            display: flex; 
-            align-items: flex-start; 
-            margin-bottom: 18px; 
+            margin-bottom: 12px; 
             font-size: 15px;
-            padding: 12px;
-            background: rgba(34, 197, 94, 0.05);
-            border-radius: 10px;
-            border-left: 3px solid var(--accent-green);
+            padding: 0;
+            background: transparent;
+            border: none;
         }
-        .offer-item span { 
+        .offer-item-header {
+            display: flex;
+            align-items: center;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 8px 0;
+        }
+        .offer-item-header span { 
             color: var(--accent-green); 
-            margin-right: 12px; 
+            margin-right: 10px; 
             font-weight: bold; 
             font-size: 18px;
         }
-        .offer-item b {
-            color: var(--accent-purple);
-            font-weight: 800;
+        .offer-item-header b {
+            color: var(--text-main);
+            font-weight: 600;
         }
-        .offer-item .bonus-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-purple), #d8b4fe);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .offer-item-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-left: 28px;
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .offer-item.active .offer-item-details {
+            max-height: 200px;
+            padding-top: 8px;
+        }
+        .offer-item-toggle {
+            margin-left: auto;
+            color: var(--accent-purple);
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .offer-item.active .offer-item-toggle {
+            transform: rotate(180deg);
+        }
+        .bonus-item {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .bonus-item .offer-item-header b {
+            color: var(--accent-purple);
+            font-weight: 700;
+        }
+        .bonus-price {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 4px;
             margin-left: 8px;
-            box-shadow: 0 2px 8px rgba(168, 85, 247, 0.4);
+        }
+        .bonus-price .old-price {
+            text-decoration: line-through;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+        .bonus-price .new-price {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .pricing-box {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pricing-box .old-price {
+            font-size: 14px;
+            color: var(--text-dim);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .pricing-box .new-price {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--accent-green);
+            display: block;
+            margin: 10px 0;
+        }
+        .pricing-box .guarantee {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 10px;
+        }
+        .offer-stack .btn-cta {
+            margin-top: 15px;
         }
 
         /* FAQ */
@@ -257,15 +315,15 @@
             <h3 style="text-align: center; margin-bottom: 20px;">+2.800 mães recuperaram sua sanidade:</h3>
             
             <div class="testimonial">
-                <img src="https://i.ibb.co/d09FW5wn/image.jpg" alt="Depoimento Amanda Nunes - WhatsApp" onerror="this.src='https://ibb.co/d09FW5wn'">
+                <img src="https://i.ibb.co/zhg4wy0k/1.png" alt="Depoimento Amanda Nunes - WhatsApp">
             </div>
 
             <div class="testimonial">
-                <img src="https://i.ibb.co/NdTDt0vx/image.jpg" alt="Depoimento Luciana Detorne - WhatsApp" onerror="this.src='https://ibb.co/NdTDt0vx'">
+                <img src="https://i.ibb.co/27YBdps4/2.png" alt="Depoimento Luciana Detorne - WhatsApp">
             </div>
 
             <div class="testimonial">
-                <img src="https://i.ibb.co/KpH2y9bP/image.jpg" alt="Depoimento Bianca - WhatsApp" onerror="this.src='https://ibb.co/KpH2y9bP'">
+                <img src="https://i.ibb.co/QjK4rDCb/3.png" alt="Depoimento Bianca - WhatsApp">
             </div>
         </div>
 
@@ -273,24 +331,54 @@
             <h3 style="text-align: center; margin-bottom: 20px;">O que você leva agora:</h3>
             
             <div class="kit-mockup">
-                <p style="margin-bottom: 10px; color: var(--accent-purple); font-weight: 600;">📦 Mockup do Kit Completo</p>
-                <p style="font-size: 12px;">Adicione aqui a imagem do mockup do kit</p>
-                <!-- <img src="mockup-kit.jpg" alt="Kit Completo Noite da Mãe"> -->
+                <img src="https://i.ibb.co/VppHZ4Cn/Gemini-Generated-Image-duf2l0duf2l0duf2-1-removebg-preview.png" alt="Kit Completo Noite da Mãe">
             </div>
             
-            <div class="offer-item"><span>✓</span> <b>Guia Prático "Noite da Mãe":</b> O protocolo neural passo a passo.</div>
-            <div class="offer-item"><span>✓</span> <b>Playlist Sonífera Premium:</b> Frequências que desligam o cortisol.</div>
-            <div class="offer-item"><span>✓</span> <b>Checklist "A Noite Perfeita":</b> Para você não esquecer nada.</div>
-            <div class="offer-item"><span>✓</span> <b>BÔNUS</b><span class="bonus-badge">GRÁTIS</span>: Guia "Como envolver o pai no protocolo".</div>
-            
-            <div style="text-align: center; margin-top: 25px; border-top: 1px solid #30363d; padding-top: 20px;">
-                <span style="font-size: 14px; color: var(--text-dim); text-decoration: line-through;">De R$ 147,00</span><br>
-                <span style="font-size: 36px; font-weight: 900; color: var(--accent-green);">R$ 19,90</span><br>
-                <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px;">Garantia de 7 dias ou seu dinheiro de volta.</p>
+            <div class="offer-item">
+                <div class="offer-item-header">
+                    <span>✓</span>
+                    <b>Guia Prático "Noite da Mãe"</b>
+                </div>
+                <div class="offer-item-details">O protocolo neural passo a passo para você aplicar hoje mesmo.</div>
             </div>
+            
+            <div class="offer-item">
+                <div class="offer-item-header">
+                    <span>✓</span>
+                    <b>Playlist Sonífera Premium</b>
+                </div>
+                <div class="offer-item-details">Frequências científicas que desligam o cortisol e acalmam o sistema nervoso do bebê.</div>
+            </div>
+            
+            <div class="offer-item">
+                <div class="offer-item-header">
+                    <span>✓</span>
+                    <b>Checklist "A Noite Perfeita"</b>
+                </div>
+                <div class="offer-item-details">Para você não esquecer nenhum passo importante do protocolo.</div>
+            </div>
+            
+            <div class="offer-item bonus-item">
+                <div class="offer-item-header">
+                    <span>✓</span>
+                    <b>BÔNUS</b>
+                    <span class="bonus-price">
+                        <span class="old-price">R$ 47,90</span>
+                        <span class="new-price">R$ 00</span>
+                    </span>
+                    <span class="offer-item-toggle">▼</span>
+                </div>
+                <div class="offer-item-details">Guia completo "Como envolver o pai no protocolo" - Para que vocês dois trabalhem juntos e tenham noites tranquilas em família.</div>
+            </div>
+            
+            <div class="pricing-box">
+                <span class="old-price">De R$ 147,00</span>
+                <span class="new-price">R$ 19,90</span>
+                <p class="guarantee">Garantia de 7 dias ou seu dinheiro de volta.</p>
+            </div>
+            
+            <a href="SEU_LINK_DE_CHECKOUT" class="btn-cta">COMPRAR COM DESCONTO AGORA</a>
         </div>
-
-        <a href="SEU_LINK_DE_CHECKOUT" class="btn-cta">COMPRAR COM DESCONTO AGORA</a>
 
         <div class="faq">
             <div class="faq-item">
@@ -326,6 +414,20 @@
                 if (--timer < 0) { timer = duration; }
             }, 1000);
         }
+        
+        // Accordion para os itens da oferta
+        document.addEventListener('DOMContentLoaded', function() {
+            var offerItems = document.querySelectorAll('.offer-item');
+            offerItems.forEach(function(item) {
+                var header = item.querySelector('.offer-item-header');
+                if (header) {
+                    header.addEventListener('click', function() {
+                        item.classList.toggle('active');
+                    });
+                }
+            });
+        });
+        
         window.onload = function () {
             var fifteenMinutes = 60 * 15,
             display = document.querySelector('#countdown');
