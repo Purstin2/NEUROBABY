@@ -1,0 +1,337 @@
+<html lang="pt-br" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noite da Mãe - Protocolo de Descompressão Neural</title>
+    <style>
+        :root {
+            --bg-dark: #0b0e14;
+            --card-bg: #161b22;
+            --accent-purple: #a855f7;
+            --accent-green: #22c55e;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --danger: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
+
+        /* Barra de Urgência */
+        .urgency-bar {
+            background: var(--danger);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 800;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container { width: 92%; max-width: 500px; margin: 0 auto; padding-bottom: 50px; }
+
+        /* Header / Headline */
+        header { text-align: center; padding: 30px 0 20px; }
+        .pre-headline { color: var(--accent-purple); font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        h1 { font-size: 28px; line-height: 1.2; font-weight: 900; margin-bottom: 20px; }
+        h1 span { background: linear-gradient(90deg, #a855f7, #d8b4fe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 .neural { color: var(--accent-purple); }
+
+        /* VSL Placeholder */
+        .video-box {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 16px;
+            border: 2px solid #30363d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .video-box::after { content: '▶'; font-size: 40px; color: var(--accent-purple); opacity: 0.8; }
+
+        /* CTA Principal */
+        .btn-cta {
+            background: var(--accent-green);
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 900;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .btn-cta small { display: block; font-size: 12px; font-weight: 400; opacity: 0.9; margin-top: 4px; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        /* Seção Vilão/Dor Oculta */
+        .pain-section {
+            margin: 40px 0;
+            padding: 0;
+        }
+        .pain-section h2 { 
+            font-size: 24px; 
+            color: var(--text-main); 
+            margin-bottom: 25px; 
+            font-weight: 900;
+            text-align: center;
+        }
+        .pain-section p { 
+            font-size: 17px; 
+            color: var(--text-main); 
+            margin-bottom: 20px; 
+            line-height: 1.8;
+            text-align: left;
+        }
+        .pain-section b { color: var(--accent-purple); font-weight: 800; }
+
+        /* Prova Social (Reviews reais da pesquisa) */
+        .social-proof { margin: 40px 0; }
+        .testimonial {
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .testimonial img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* Stack da Oferta */
+        .offer-stack {
+            background: linear-gradient(180deg, #161b22 0%, #0b0e14 100%);
+            border: 2px solid var(--accent-purple);
+            padding: 25px;
+            border-radius: 24px;
+            margin: 40px 0;
+        }
+        .kit-mockup {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border-radius: 16px;
+            border: 2px dashed var(--accent-purple);
+            padding: 20px;
+            background: rgba(168, 85, 247, 0.05);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+        .kit-mockup img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+        .offer-item { 
+            display: flex; 
+            align-items: flex-start; 
+            margin-bottom: 18px; 
+            font-size: 15px;
+            padding: 12px;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-green);
+        }
+        .offer-item span { 
+            color: var(--accent-green); 
+            margin-right: 12px; 
+            font-weight: bold; 
+            font-size: 18px;
+        }
+        .offer-item b {
+            color: var(--accent-purple);
+            font-weight: 800;
+        }
+        .offer-item .bonus-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-purple), #d8b4fe);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+            box-shadow: 0 2px 8px rgba(168, 85, 247, 0.4);
+        }
+
+        /* FAQ */
+        .faq { margin-top: 40px; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { color: var(--accent-purple); margin-bottom: 5px; font-size: 16px; }
+        .faq-item p { color: var(--text-dim); font-size: 14px; }
+
+        footer { text-align: center; padding: 40px 0; font-size: 12px; color: #4b5563; border-top: 1px solid #1f2937; }
+        
+        /* Prova Social com Estrelas - Badge Pequeno */
+        .rating-box {
+            text-align: center;
+            margin: 25px 0;
+            padding: 0;
+        }
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .rating-stars {
+            font-size: 16px;
+            color: #fbbf24;
+            letter-spacing: 2px;
+        }
+        .rating-score {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .rating-text {
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+        .rating-link {
+            display: block;
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .rating-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="">
+
+    <div class="urgency-bar" id="__FPSC_ID_1_1767051251984" style="">
+        ⏳ Oferta expira em: <span id="countdown">14:59</span>
+    </div>
+
+    <div class="container">
+        <header>
+            <span class="pre-headline">Para mães exaustas que já tentaram de tudo</span>
+            <h1>Ative o <span>Protocolo de Descompressão</span> <span class="neural">Neural</span> e faça seu bebê dormir 8h hoje</h1>
+        </header>
+
+        <div class="video-box">
+            </div>
+
+        <div class="rating-box">
+            <div class="rating-badge">
+                <span class="rating-stars">★★★★★</span>
+                <span class="rating-score">4.9/5</span>
+                <span class="rating-text">- Mais de 2.800 mães aprovam</span>
+            </div>
+            <a href="#social-proof" class="rating-link">Veja como funciona ↓</a>
+        </div>
+
+        <div class="pain-section">
+            <h2>Você não é uma "péssima mãe"...</h2>
+            <p>Você sente que é prisioneira do relógio? Que não pode sair de casa com medo da próxima crise de choro?</p>
+            <p>O motivo do seu bebê não dormir não é culpa sua ou da sua rotina. É o <b>Pico de Cortisol Oculto</b> que trava o cérebro dele no modo de alerta.</p>
+            <p>Enquanto as outras mães mentem dizendo que os bebês delas são "anjinhos", nós vamos te dar a ferramenta biológica para você voltar a ser você mesma, e não apenas uma máquina de amamentar.</p>
+        </div>
+
+        <div class="social-proof" id="social-proof">
+            <h3 style="text-align: center; margin-bottom: 20px;">+2.800 mães recuperaram sua sanidade:</h3>
+            
+            <div class="testimonial">
+                <img src="https://i.ibb.co/d09FW5wn/image.jpg" alt="Depoimento Amanda Nunes - WhatsApp" onerror="this.src='https://ibb.co/d09FW5wn'">
+            </div>
+
+            <div class="testimonial">
+                <img src="https://i.ibb.co/NdTDt0vx/image.jpg" alt="Depoimento Luciana Detorne - WhatsApp" onerror="this.src='https://ibb.co/NdTDt0vx'">
+            </div>
+
+            <div class="testimonial">
+                <img src="https://i.ibb.co/KpH2y9bP/image.jpg" alt="Depoimento Bianca - WhatsApp" onerror="this.src='https://ibb.co/KpH2y9bP'">
+            </div>
+        </div>
+
+        <div class="offer-stack" id="checkout">
+            <h3 style="text-align: center; margin-bottom: 20px;">O que você leva agora:</h3>
+            
+            <div class="kit-mockup">
+                <p style="margin-bottom: 10px; color: var(--accent-purple); font-weight: 600;">📦 Mockup do Kit Completo</p>
+                <p style="font-size: 12px;">Adicione aqui a imagem do mockup do kit</p>
+                <!-- <img src="mockup-kit.jpg" alt="Kit Completo Noite da Mãe"> -->
+            </div>
+            
+            <div class="offer-item"><span>✓</span> <b>Guia Prático "Noite da Mãe":</b> O protocolo neural passo a passo.</div>
+            <div class="offer-item"><span>✓</span> <b>Playlist Sonífera Premium:</b> Frequências que desligam o cortisol.</div>
+            <div class="offer-item"><span>✓</span> <b>Checklist "A Noite Perfeita":</b> Para você não esquecer nada.</div>
+            <div class="offer-item"><span>✓</span> <b>BÔNUS</b><span class="bonus-badge">GRÁTIS</span>: Guia "Como envolver o pai no protocolo".</div>
+            
+            <div style="text-align: center; margin-top: 25px; border-top: 1px solid #30363d; padding-top: 20px;">
+                <span style="font-size: 14px; color: var(--text-dim); text-decoration: line-through;">De R$ 147,00</span><br>
+                <span style="font-size: 36px; font-weight: 900; color: var(--accent-green);">R$ 19,90</span><br>
+                <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px;">Garantia de 7 dias ou seu dinheiro de volta.</p>
+            </div>
+        </div>
+
+        <a href="SEU_LINK_DE_CHECKOUT" class="btn-cta">COMPRAR COM DESCONTO AGORA</a>
+
+        <div class="faq">
+            <div class="faq-item">
+                <h4>Isso é método de deixar chorar?</h4>
+                <p>Absolutamente não. Nosso protocolo é baseado na biologia do relaxamento, sem traumas para o bebê ou para você.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Tenho que seguir horários rígidos?</h4>
+                <p>Não. Criamos algo para a vida real. Você não será mais prisioneira das janelas de sono do relógio.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Como recebo o acesso?</h4>
+                <p>O acesso é imediato via e-mail após a confirmação do pagamento. Você pode começar a usar na soneca de hoje.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Este site não é afiliado ao Facebook ou Google.</p>
+            <p>© 2025 Noite da Mãe - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Timer de 15 minutos funcional
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                if (--timer < 0) { timer = duration; }
+            }, 1000);
+        }
+        window.onload = function () {
+            var fifteenMinutes = 60 * 15,
+            display = document.querySelector('#countdown');
+            startTimer(fifteenMinutes, display);
+        };
+    </script>
+
+</body></html>
+
