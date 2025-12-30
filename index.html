@@ -40,6 +40,7 @@
         h1 { font-size: 28px; line-height: 1.2; font-weight: 900; margin-bottom: 20px; }
         h1 span { background: linear-gradient(90deg, #a855f7, #d8b4fe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         h1 .neural { color: var(--accent-purple); }
+        h3 { font-weight: 900; }
 
         /* VSL Placeholder */
         .video-box {
@@ -95,16 +96,29 @@
         .pain-section p { 
             font-size: 17px; 
             color: var(--text-main); 
-            margin-bottom: 20px; 
+            margin-bottom: 80px; 
             line-height: 1.8;
             text-align: left;
         }
         .pain-section b { color: var(--accent-purple); font-weight: 800; }
 
         /* Prova Social (Reviews reais da pesquisa) */
-        .social-proof { margin: 40px 0; }
+        .social-proof { 
+            margin: 40px 0; 
+            position: relative;
+        }
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .testimonial-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
         .testimonial {
-            margin-bottom: 25px;
+            min-width: 100%;
+            margin-bottom: 0;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -114,78 +128,104 @@
             display: block;
             border-radius: 12px;
         }
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .carousel-btn {
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .carousel-btn:hover {
+            background: var(--accent-green);
+            transform: scale(1.1);
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .carousel-dot.active {
+            background: var(--accent-green);
+            width: 25px;
+            border-radius: 5px;
+        }
 
         /* Stack da Oferta */
         .offer-stack {
-            padding: 0;
+            background: linear-gradient(135deg, #1a1f2e 0%, #161b22 50%, #0f1419 100%);
+            border: 2px solid var(--accent-green);
+            padding: 30px 25px;
+            border-radius: 20px;
             margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.15);
+        }
+        .offer-stack h3 {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 0;
+            text-align: center;
         }
         .kit-mockup {
             width: 100%;
-            max-width: 400px;
-            margin: 20px auto 30px;
+            margin: 0 auto 30px;
             border-radius: 16px;
             overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(34, 197, 94, 0.15) 50%, rgba(168, 85, 247, 0.1) 100%);
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         .kit-mockup img {
-            width: 100%;
+            width: 120%;
+            max-width: none;
+            margin-left: -10%;
             border-radius: 12px;
             display: block;
+            position: relative;
+            z-index: 1;
+        }
+        .offer-items-list {
+            margin-bottom: 25px;
         }
         .offer-item { 
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 12px; 
             font-size: 15px;
-            padding: 0;
-            background: transparent;
-            border: none;
-        }
-        .offer-item-header {
-            display: flex;
-            align-items: center;
             color: var(--text-main);
-            cursor: pointer;
-            padding: 8px 0;
         }
-        .offer-item-header span { 
+        .offer-item span { 
             color: var(--accent-green); 
             margin-right: 10px; 
             font-weight: bold; 
             font-size: 18px;
         }
-        .offer-item-header b {
+        .offer-item b {
             color: var(--text-main);
-            font-weight: 600;
-        }
-        .offer-item-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding-left: 28px;
-            color: var(--text-dim);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .offer-item.active .offer-item-details {
-            max-height: 200px;
-            padding-top: 8px;
-        }
-        .offer-item-toggle {
-            margin-left: auto;
-            color: var(--accent-purple);
-            font-size: 12px;
-            transition: transform 0.3s ease;
-        }
-        .offer-item.active .offer-item-toggle {
-            transform: rotate(180deg);
-        }
-        .bonus-item {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .bonus-item .offer-item-header b {
-            color: var(--accent-purple);
-            font-weight: 700;
+            font-weight: 500;
         }
         .bonus-price {
             display: inline-flex;
@@ -205,31 +245,25 @@
         }
         .pricing-box {
             text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 25px;
+            padding: 0;
         }
         .pricing-box .old-price {
-            font-size: 14px;
+            font-size: 18px;
             color: var(--text-dim);
             text-decoration: line-through;
             display: block;
             margin-bottom: 8px;
         }
         .pricing-box .new-price {
-            font-size: 36px;
+            font-size: 48px;
             font-weight: 900;
             color: var(--accent-green);
             display: block;
-            margin: 10px 0;
-        }
-        .pricing-box .guarantee {
-            font-size: 11px;
-            color: var(--text-dim);
-            margin-top: 10px;
+            line-height: 1.2;
         }
         .offer-stack .btn-cta {
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         /* FAQ */
@@ -270,6 +304,7 @@
         .rating-link {
             display: block;
             margin-top: 8px;
+            margin-bottom: 80px;
             font-size: 13px;
             color: var(--accent-purple);
             text-decoration: none;
@@ -314,70 +349,69 @@
         <div class="social-proof" id="social-proof">
             <h3 style="text-align: center; margin-bottom: 20px;">+2.800 mães recuperaram sua sanidade:</h3>
             
-            <div class="testimonial">
-                <img src="https://i.ibb.co/zhg4wy0k/1.png" alt="Depoimento Amanda Nunes - WhatsApp">
+            <div class="testimonial-carousel">
+                <div class="testimonial-wrapper" id="testimonialWrapper">
+                    <div class="testimonial">
+                        <img src="https://i.ibb.co/zhg4wy0k/1.png" alt="Depoimento Amanda Nunes - WhatsApp">
+                    </div>
+                    <div class="testimonial">
+                        <img src="https://i.ibb.co/27YBdps4/2.png" alt="Depoimento Luciana Detorne - WhatsApp">
+                    </div>
+                    <div class="testimonial">
+                        <img src="https://i.ibb.co/QjK4rDCb/3.png" alt="Depoimento Bianca - WhatsApp">
+                    </div>
+                </div>
             </div>
-
-            <div class="testimonial">
-                <img src="https://i.ibb.co/27YBdps4/2.png" alt="Depoimento Luciana Detorne - WhatsApp">
+            
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn">‹</button>
+                <button class="carousel-btn" id="nextBtn">›</button>
             </div>
-
-            <div class="testimonial">
-                <img src="https://i.ibb.co/QjK4rDCb/3.png" alt="Depoimento Bianca - WhatsApp">
+            
+            <div class="carousel-dots" id="carouselDots">
+                <span class="carousel-dot active" data-index="0"></span>
+                <span class="carousel-dot" data-index="1"></span>
+                <span class="carousel-dot" data-index="2"></span>
             </div>
         </div>
 
         <div class="offer-stack" id="checkout">
-            <h3 style="text-align: center; margin-bottom: 20px;">O que você leva agora:</h3>
+            <h3>Oferta limitada hoje</h3>
             
             <div class="kit-mockup">
                 <img src="https://i.ibb.co/VppHZ4Cn/Gemini-Generated-Image-duf2l0duf2l0duf2-1-removebg-preview.png" alt="Kit Completo Noite da Mãe">
             </div>
             
-            <div class="offer-item">
-                <div class="offer-item-header">
+            <div class="offer-items-list">
+                <p style="color: var(--text-main); font-weight: 600; margin-bottom: 15px; font-size: 16px;">Você recebe imediatamente:</p>
+                
+                <div class="offer-item">
                     <span>✓</span>
-                    <b>Guia Prático "Noite da Mãe"</b>
+                    <b>Ebook completo com passo a passo detalhado.</b>
                 </div>
-                <div class="offer-item-details">O protocolo neural passo a passo para você aplicar hoje mesmo.</div>
-            </div>
-            
-            <div class="offer-item">
-                <div class="offer-item-header">
+                
+                <div class="offer-item">
                     <span>✓</span>
-                    <b>Playlist Sonífera Premium</b>
+                    <b>Planilha rastreadora de sono para organizar a rotina.</b>
                 </div>
-                <div class="offer-item-details">Frequências científicas que desligam o cortisol e acalmam o sistema nervoso do bebê.</div>
-            </div>
-            
-            <div class="offer-item">
-                <div class="offer-item-header">
+                
+                <div class="offer-item">
                     <span>✓</span>
-                    <b>Checklist "A Noite Perfeita"</b>
+                    <b>Checklist imprimível para não esquecer nenhum passo.</b>
                 </div>
-                <div class="offer-item-details">Para você não esquecer nenhum passo importante do protocolo.</div>
-            </div>
-            
-            <div class="offer-item bonus-item">
-                <div class="offer-item-header">
+                
+                <div class="offer-item">
                     <span>✓</span>
-                    <b>BÔNUS</b>
-                    <span class="bonus-price">
-                        <span class="old-price">R$ 47,90</span>
-                        <span class="new-price">R$ 00</span>
-                    </span>
-                    <span class="offer-item-toggle">▼</span>
+                    <b>Playlist exclusiva de White Noise para acalmar o bebê.</b>
                 </div>
-                <div class="offer-item-details">Guia completo "Como envolver o pai no protocolo" - Para que vocês dois trabalhem juntos e tenham noites tranquilas em família.</div>
             </div>
             
             <div class="pricing-box">
-                <span class="old-price">De R$ 147,00</span>
+                <span class="old-price">De R$ 119,90</span>
                 <span class="new-price">R$ 19,90</span>
-                <p class="guarantee">Garantia de 7 dias ou seu dinheiro de volta.</p>
             </div>
             
-            <a href="SEU_LINK_DE_CHECKOUT" class="btn-cta">COMPRAR COM DESCONTO AGORA</a>
+            <a href="SEU_LINK_DE_CHECKOUT" class="btn-cta">COMPRAR COM DESCONTO</a>
         </div>
 
         <div class="faq">
@@ -415,23 +449,53 @@
             }, 1000);
         }
         
-        // Accordion para os itens da oferta
-        document.addEventListener('DOMContentLoaded', function() {
-            var offerItems = document.querySelectorAll('.offer-item');
-            offerItems.forEach(function(item) {
-                var header = item.querySelector('.offer-item-header');
-                if (header) {
-                    header.addEventListener('click', function() {
-                        item.classList.toggle('active');
-                    });
-                }
-            });
-        });
-        
         window.onload = function () {
             var fifteenMinutes = 60 * 15,
             display = document.querySelector('#countdown');
             startTimer(fifteenMinutes, display);
+            
+            // Carrossel de testimonials
+            var currentSlide = 0;
+            var totalSlides = 3;
+            var wrapper = document.getElementById('testimonialWrapper');
+            var dots = document.querySelectorAll('.carousel-dot');
+            
+            function updateCarousel() {
+                if (wrapper) {
+                    wrapper.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+                }
+                dots.forEach(function(dot, index) {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            var nextBtn = document.getElementById('nextBtn');
+            var prevBtn = document.getElementById('prevBtn');
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateCarousel();
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateCarousel();
+                });
+            }
+            
+            dots.forEach(function(dot, index) {
+                dot.addEventListener('click', function() {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
         };
     </script>
 
