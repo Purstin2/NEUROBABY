@@ -2,11 +2,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noite da Mãe - Protocolo de Descompressão Neural</title>
+    
+    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+    <link rel="preload" href="https://scripts.converteai.net/952cb2f7-c44c-4208-9a77-21345f5e7d8d/players/6955afde4bac1bead914c4e9/v4/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+    <link rel="preload" href="https://cdn.converteai.net/952cb2f7-c44c-4208-9a77-21345f5e7d8d/6955afc8d883372e563c66fa/main.m3u8" as="fetch">
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
     <style>
         :root {
             --bg-dark: #0b0e14;
             --card-bg: #161b22;
-            --accent-purple: #a855f7;
+            --accent-purple: #87CEEB;
             --accent-green: #22c55e;
             --text-main: #f1f5f9;
             --text-dim: #94a3b8;
@@ -35,25 +44,15 @@
         header { text-align: center; padding: 30px 0 20px; }
         .pre-headline { color: var(--accent-purple); font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 15px; display: block; }
         h1 { font-size: 28px; line-height: 1.2; font-weight: 900; margin-bottom: 20px; }
-        h1 span { background: linear-gradient(90deg, #a855f7, #d8b4fe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 span { background: linear-gradient(90deg, #87CEEB, #B0E0E6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         h1 .neural { color: var(--accent-purple); }
         h3 { font-weight: 900; }
 
         /* VSL Placeholder */
         .video-box {
             width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
-            border-radius: 16px;
-            border: 2px solid #30363d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .video-box::after { content: '▶'; font-size: 40px; color: var(--accent-purple); opacity: 0.8; }
 
         /* CTA Principal */
         .btn-cta {
@@ -182,7 +181,7 @@
             border-radius: 16px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(34, 197, 94, 0.15) 50%, rgba(168, 85, 247, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.2) 0%, rgba(34, 197, 94, 0.15) 50%, rgba(135, 206, 235, 0.1) 100%);
             padding: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
@@ -332,7 +331,9 @@
         </header>
 
         <div class="video-box">
-            </div>
+            <vturb-smartplayer id="vid-6955afde4bac1bead914c4e9" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+            <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/952cb2f7-c44c-4208-9a77-21345f5e7d8d/players/6955afde4bac1bead914c4e9/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+        </div>
 
         <div class="rating-box">
             <div class="rating-badge">
