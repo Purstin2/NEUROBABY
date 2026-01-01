@@ -106,64 +106,34 @@
             border-radius: 12px;
             padding: 20px;
         }
-        .testimonial-carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
+        .testimonials-grid {
             display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 10;
-        }
-        .testimonial-wrapper {
-            display: flex;
-            transition: transform 0.5s ease;
+            flex-direction: column;
+            gap: 20px;
         }
         .testimonial {
-            min-width: 100%;
-            margin-bottom: 0;
+            width: 100%;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
         }
         .testimonial img {
             width: 100%;
+            height: auto;
             display: block;
             border-radius: 12px;
-        }
-        .carousel-btn {
-            background: var(--accent-purple);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            pointer-events: all;
-        }
-        .carousel-btn:hover {
-            background: var(--accent-green);
-            transform: scale(1.1);
         }
 
         /* Stack da Oferta */
         .offer-stack {
             background: linear-gradient(135deg, #1a1f2e 0%, #161b22 50%, #0f1419 100%);
             border: 2px solid var(--accent-green);
-            padding: 30px 25px;
+            padding: 40px 35px;
             border-radius: 20px;
             margin: 40px 0;
             box-shadow: 0 8px 30px rgba(34, 197, 94, 0.15);
@@ -178,21 +148,15 @@
         .kit-mockup {
             width: 100%;
             margin: 0 auto 30px;
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, rgba(135, 206, 235, 0.2) 0%, rgba(34, 197, 94, 0.15) 50%, rgba(135, 206, 235, 0.1) 100%);
-            padding: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
         .kit-mockup img {
-            width: 120%;
-            max-width: none;
-            margin-left: -10%;
-            border-radius: 12px;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
             display: block;
-            position: relative;
-            z-index: 1;
+            border-radius: 12px;
+            filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.7)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
         }
         .offer-items-list {
             margin-bottom: 25px;
@@ -354,30 +318,24 @@
         <div class="social-proof" id="social-proof">
             <h3 style="text-align: center; margin-bottom: 20px;">+2.800 mães recuperaram sua sanidade:</h3>
             
-            <div class="testimonial-carousel">
-                <div class="carousel-nav">
-                    <button class="carousel-btn" id="prevBtn">‹</button>
-                    <button class="carousel-btn" id="nextBtn">›</button>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <img src="https://i.ibb.co/zhg4wy0k/1.png" alt="Depoimento Amanda Nunes - WhatsApp">
                 </div>
-                <div class="testimonial-wrapper" id="testimonialWrapper">
-                    <div class="testimonial">
-                        <img src="https://i.ibb.co/zhg4wy0k/1.png" alt="Depoimento Amanda Nunes - WhatsApp">
-                    </div>
-                    <div class="testimonial">
-                        <img src="https://i.ibb.co/27YBdps4/2.png" alt="Depoimento Luciana Detorne - WhatsApp">
-                    </div>
-                    <div class="testimonial">
-                        <img src="https://i.ibb.co/QjK4rDCb/3.png" alt="Depoimento Bianca - WhatsApp">
-                    </div>
+                <div class="testimonial">
+                    <img src="https://i.ibb.co/27YBdps4/2.png" alt="Depoimento Luciana Detorne - WhatsApp">
+                </div>
+                <div class="testimonial">
+                    <img src="https://i.ibb.co/QjK4rDCb/3.png" alt="Depoimento Bianca - WhatsApp">
                 </div>
             </div>
         </div>
 
         <div class="offer-stack" id="checkout">
-            <h3>Oferta limitada hoje</h3>
+            <h3>Método Sono Tranquilo - Protocolo de Descompressão Neural</h3>
             
             <div class="kit-mockup">
-                <img src="https://i.ibb.co/VppHZ4Cn/Gemini-Generated-Image-duf2l0duf2l0duf2-1-removebg-preview.png" alt="Kit Completo Noite da Mãe">
+                <img src="https://i.ibb.co/yFnDCqKk/Design-sem-nome.png" alt="Kit Completo Noite da Mãe">
             </div>
             
             <div class="offer-items-list">
@@ -472,76 +430,6 @@
             display = document.querySelector('#countdown');
             startTimer(fifteenMinutes, display);
             
-            // Carrossel de testimonials infinito
-            var currentSlide = 0;
-            var totalSlides = 3;
-            var wrapper = document.getElementById('testimonialWrapper');
-            var isTransitioning = false;
-            
-            // Clonar slides para criar loop infinito
-            if (wrapper) {
-                var firstSlide = wrapper.children[0].cloneNode(true);
-                var lastSlide = wrapper.children[totalSlides - 1].cloneNode(true);
-                wrapper.insertBefore(lastSlide, wrapper.firstChild);
-                wrapper.appendChild(firstSlide);
-                currentSlide = 1; // Começar no primeiro slide real (não no clone)
-                wrapper.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-            }
-            
-            function updateCarousel(smooth) {
-                if (wrapper && !isTransitioning) {
-                    if (smooth !== false) {
-                        wrapper.style.transition = 'transform 0.5s ease';
-                    } else {
-                        wrapper.style.transition = 'none';
-                    }
-                    wrapper.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-                }
-            }
-            
-            function goToNext() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentSlide++;
-                updateCarousel();
-                
-                setTimeout(function() {
-                    if (currentSlide >= totalSlides + 1) {
-                        currentSlide = 1;
-                        updateCarousel(false);
-                    }
-                    isTransitioning = false;
-                }, 500);
-            }
-            
-            function goToPrev() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentSlide--;
-                updateCarousel();
-                
-                setTimeout(function() {
-                    if (currentSlide <= 0) {
-                        currentSlide = totalSlides;
-                        updateCarousel(false);
-                    }
-                    isTransitioning = false;
-                }, 500);
-            }
-            
-            var nextBtn = document.getElementById('nextBtn');
-            var prevBtn = document.getElementById('prevBtn');
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', goToNext);
-            }
-            
-            if (prevBtn) {
-                prevBtn.addEventListener('click', goToPrev);
-            }
-            
-            // Auto-play infinito
-            setInterval(goToNext, 4000);
         };
     </script>
 
