@@ -102,38 +102,41 @@
         .social-proof { 
             margin: 40px 0; 
             position: relative;
-            border: 2px solid var(--accent-purple);
-            border-radius: 12px;
-            padding: 20px;
         }
-        .testimonial-carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            width: 100%;
-        }
-        .testimonial-wrapper {
+        .testimonials-grid {
             display: flex;
-            transition: transform 0.6s ease;
+            flex-direction: column;
             gap: 20px;
-            align-items: flex-start;
         }
         .testimonial {
-            flex-shrink: 0;
+            width: 100%;
             border-radius: 12px;
-            overflow: visible;
+            overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .testimonial img {
-            width: auto;
-            max-width: 100%;
+            width: 100%;
             height: auto;
             display: block;
             border-radius: 12px;
-            object-fit: contain;
+        }
+        .ver-mais-btn {
+            display: block;
+            margin: 15px auto 0;
+            padding: 8px 20px;
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .ver-mais-btn:hover {
+            background: var(--accent-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         /* Stack da Oferta */
@@ -240,38 +243,6 @@
             margin-top: 20px;
         }
 
-        /* Bloco de Garantia */
-        .guarantee-box {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
-            border: 2px solid var(--accent-green);
-            border-radius: 20px;
-            padding: 30px 25px;
-            margin: 40px 0;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.2);
-        }
-        .guarantee-box .guarantee-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-            display: block;
-        }
-        .guarantee-box h4 {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--accent-green);
-            margin-bottom: 15px;
-        }
-        .guarantee-box p {
-            font-size: 16px;
-            color: var(--text-main);
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        .guarantee-box .guarantee-highlight {
-            color: var(--accent-green);
-            font-weight: 700;
-        }
-
         /* FAQ */
         .faq { margin-top: 40px; }
         .faq-item { margin-bottom: 20px; }
@@ -357,17 +328,16 @@
         <div class="social-proof" id="social-proof">
             <h3 style="text-align: center; margin-bottom: 20px;">+2.800 mães recuperaram sua sanidade:</h3>
             
-            <div class="testimonial-carousel">
-                <div class="testimonial-wrapper" id="testimonialWrapper">
-                    <div class="testimonial">
-                        <img src="https://i.ibb.co/zhg4wy0k/1.png" alt="Depoimento Amanda Nunes - WhatsApp">
-                    </div>
-                    <div class="testimonial">
-                        <img src="https://i.ibb.co/27YBdps4/2.png" alt="Depoimento Luciana Detorne - WhatsApp">
-                    </div>
-                    <div class="testimonial">
-                        <img src="https://i.ibb.co/QjK4rDCb/3.png" alt="Depoimento Bianca - WhatsApp">
-                    </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <img src="https://i.ibb.co/zhg4wy0k/1.png" alt="Depoimento Amanda Nunes - WhatsApp">
+                </div>
+                <div class="testimonial">
+                    <img src="https://i.ibb.co/27YBdps4/2.png" alt="Depoimento Luciana Detorne - WhatsApp">
+                </div>
+                <div class="testimonial">
+                    <img src="https://i.ibb.co/QjK4rDCb/3.png" alt="Depoimento Bianca - WhatsApp">
+                    <button class="ver-mais-btn">VER MAIS</button>
                 </div>
             </div>
         </div>
@@ -431,14 +401,6 @@
             <a href="https://www.ggcheckout.com/checkout/v2/isVXSWGR02zQWeJWL19s" class="btn-cta">COMPRAR COM DESCONTO</a>
         </div>
 
-        <div class="guarantee-box">
-            <span class="guarantee-icon">🛡️</span>
-            <h4>Garantia Incondicional de 7 Dias</h4>
-            <p>Estamos <span class="guarantee-highlight">100% confiantes</span> que nosso protocolo vai transformar as noites do seu bebê.</p>
-            <p>Se por qualquer motivo você não ficar satisfeita, devolvemos <span class="guarantee-highlight">100% do seu investimento</span> - sem perguntas, sem complicações.</p>
-            <p style="font-size: 14px; color: var(--text-dim); margin-top: 15px;">Compra 100% segura e protegida</p>
-        </div>
-
         <div class="faq">
             <div class="faq-item">
                 <h4>Isso é método de deixar chorar?</h4>
@@ -478,47 +440,6 @@
             var fifteenMinutes = 60 * 15,
             display = document.querySelector('#countdown');
             startTimer(fifteenMinutes, display);
-            
-            // Carrossel automático de testimonials - responsivo às imagens
-            var wrapper = document.getElementById('testimonialWrapper');
-            if (wrapper) {
-                var totalSlides = wrapper.children.length;
-                var currentSlide = 0;
-                var isTransitioning = false;
-                
-                // Função para calcular a posição baseada no tamanho real das imagens
-                function getSlidePosition(slideIndex) {
-                    var position = 0;
-                    for (var i = 0; i < slideIndex; i++) {
-                        var slide = wrapper.children[i];
-                        if (slide && slide.offsetWidth) {
-                            position += slide.offsetWidth + 20; // 20px é o gap
-                        }
-                    }
-                    return position;
-                }
-                
-                function moveCarousel() {
-                    if (isTransitioning) return;
-                    isTransitioning = true;
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                    
-                    var position = getSlidePosition(currentSlide);
-                    wrapper.style.transition = 'transform 0.6s ease';
-                    wrapper.style.transform = 'translateX(-' + position + 'px)';
-                    
-                    setTimeout(function() {
-                        isTransitioning = false;
-                    }, 600);
-                }
-                
-                // Aguardar carregamento das imagens
-                setTimeout(function() {
-                    wrapper.style.transform = 'translateX(0px)';
-                    // Auto-play a cada 3 segundos
-                    setInterval(moveCarousel, 3000);
-                }, 500);
-            }
             
         };
     </script>
