@@ -43,7 +43,7 @@
         /* Header / Headline */
         header { text-align: center; padding: 30px 0 20px; }
         .pre-headline { color: var(--accent-purple); font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        h1 { font-size: 28px; line-height: 1.2; font-weight: 900; margin-bottom: 20px; }
+        h1 { font-size: 28px; line-height: 1.2; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; }
         h1 span { background: linear-gradient(90deg, #87CEEB, #B0E0E6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         h1 .neural { color: var(--accent-purple); }
         h3 { font-weight: 900; }
@@ -103,6 +103,17 @@
             margin: 40px 0; 
             position: relative;
         }
+        .social-proof h3 {
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+            font-size: 22px;
+            text-align: center;
+            background: linear-gradient(90deg, #87CEEB, #B0E0E6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .testimonials-grid {
             display: flex;
             flex-direction: column;
@@ -142,11 +153,11 @@
         /* Stack da Oferta */
         .offer-stack {
             background: linear-gradient(135deg, #1a1f2e 0%, #161b22 50%, #0f1419 100%);
-            border: 2px solid var(--accent-green);
+            border: 2px solid var(--accent-purple);
             padding: 40px 35px;
             border-radius: 20px;
             margin: 40px 0;
-            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.15);
+            box-shadow: 0 8px 30px rgba(135, 206, 235, 0.15);
         }
         .offer-stack h3 {
             font-size: 20px;
@@ -184,7 +195,7 @@
             align-items: flex-start;
         }
         .offer-item span { 
-            color: var(--accent-green); 
+            color: var(--accent-purple); 
             margin-right: 10px; 
             font-weight: bold; 
             font-size: 18px;
@@ -205,7 +216,7 @@
             font-size: 12px;
         }
         .offer-item .bonus-info strong {
-            color: var(--accent-green);
+            color: var(--accent-purple);
             font-weight: 900;
             font-size: 14px;
             text-transform: uppercase;
@@ -223,7 +234,7 @@
             font-size: 14px;
         }
         .bonus-price .new-price {
-            color: var(--accent-green);
+            color: var(--accent-purple);
             font-weight: 700;
             font-size: 16px;
         }
@@ -242,7 +253,7 @@
         .pricing-box .new-price {
             font-size: 48px;
             font-weight: 900;
-            color: var(--accent-green);
+            color: var(--accent-purple);
             display: block;
             line-height: 1.2;
         }
@@ -372,8 +383,85 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
         }
-        .whatsapp-float .wa-icon {
+
+        /* Grid de 3 Passos */
+        .steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .step-card {
+            position: relative;
+            background: linear-gradient(135deg, #1a1f2e 0%, #161b22 50%, #0f1419 100%);
+            border: 2px solid var(--accent-purple);
+            border-radius: 16px;
+            padding: 30px 25px;
+            box-shadow: 0 8px 30px rgba(135, 206, 235, 0.15);
+            overflow: hidden;
+        }
+        .step-number-bg {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            font-size: 100px;
+            font-weight: 900;
+            color: rgba(135, 206, 235, 0.1);
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .step-content {
+            position: relative;
+            z-index: 1;
+        }
+        .step-badge {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: var(--bg-dark);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .step-card h3 {
             font-size: 20px;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .step-card p {
+            font-size: 15px;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .step-card p strong {
+            color: var(--accent-purple);
+            font-weight: 700;
+        }
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(135, 206, 235, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .step-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-purple);
         }
 
     </style>
@@ -412,7 +500,7 @@
         </div>
 
         <div class="social-proof" id="social-proof">
-            <h3 style="text-align: center; margin-bottom: 20px;">+2.800 mães recuperaram sua sanidade:</h3>
+            <h3>+2.800 MÃES RECUPERARAM SUA SANIDADE:</h3>
             
             <div class="testimonials-grid">
                 <div class="testimonial">
@@ -429,6 +517,76 @@
                     <button class="ver-mais-btn">VER MAIS</button>
                 </div>
             </div>
+        </div>
+
+        <!-- Grid de 3 Passos -->
+        <div class="steps-grid">
+            
+            <!-- PASSO 1 -->
+            <div class="step-card">
+                <div class="step-number-bg">1</div>
+                <div class="step-content">
+                    <!-- Badge -->
+                    <div class="step-badge">PASSO 1</div>
+                    
+                    <!-- Título do passo -->
+                    <h3>Identifica o Pico de Cortisol</h3>
+                    
+                    <!-- Descrição palpável -->
+                    <p>
+                        Usando a <strong>planilha rastreadora</strong>, você mapeia em 24 horas <strong>exatamente quando</strong> o cérebro do bebê entra em modo alerta.
+                    </p>
+                    
+                    <!-- Ícone visual -->
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PASSO 2 -->
+            <div class="step-card">
+                <div class="step-number-bg">2</div>
+                <div class="step-content">
+                    <div class="step-badge">PASSO 2</div>
+                    
+                    <h3>Aplica o Protocolo de Descompressão</h3>
+                    
+                    <p>
+                        Segue o <strong>checklist de 10 ações</strong> que baixam o cortisol biologicamente: luz, som, temperatura, toque e timing calibrados.
+                    </p>
+                    
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PASSO 3 -->
+            <div class="step-card">
+                <div class="step-number-bg">3</div>
+                <div class="step-content">
+                    <div class="step-badge">PASSO 3</div>
+                    
+                    <h3>Vê o Resultado em 48 Horas</h3>
+                    
+                    <p>
+                        <strong>Primeira noite:</strong> Bebê dorme 4-5h seguidas sem acordar.<br>
+                        <strong>Terceira noite:</strong> Rotina consolidada, 6-8h de sono contínuo.
+                    </p>
+                    
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.34 2.02C6.59 1.82 2 6.42 2 12c0 5.52 4.48 10 10 10 3.71 0 6.93-2.02 8.66-5.02-7.51-.25-13.1-6.66-12.99-14.96z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
         </div>
 
         <div class="offer-stack" id="checkout">
@@ -487,7 +645,7 @@
                 <span class="new-price">R$ 19,90</span>
             </div>
             
-            <a href="https://pay.kirvano.com/629df105-9578-4757-93f0-d99262592418" class="btn-cta">COMPRAR COM DESCONTO</a>
+            <a href="https://pay.kirvano.com/629df105-9578-4757-93f0-d99262592418" class="btn-cta">COMPRAR AGORA</a>
         </div>
 
         <div class="trust-section">
@@ -580,8 +738,7 @@
 
     <!-- Botão Flutuante WhatsApp -->
     <a href="https://wa.me/5519991325553" class="whatsapp-float" target="_blank">
-        <span class="wa-icon">💬</span>
-        <span>Dúvidas? Fale conosco</span>
+        <span>Dúvidas</span>
     </a>
 
 
