@@ -109,11 +109,47 @@
             letter-spacing: 1px;
             font-size: 22px;
             text-align: center;
-            background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            -webkit-text-fill-color: transparent;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        .depoimento-video {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        .depoimento-video::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .depoimento-video::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .depoimento-video iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+            display: block;
+            position: relative;
+            z-index: 0;
         }
         .testimonials-grid {
             display: flex;
@@ -538,6 +574,10 @@
 
         <div class="social-proof" id="social-proof">
             <h3>+2.800 MÃES RECUPERARAM SUA SANIDADE</h3>
+            
+            <div class="depoimento-video">
+                <iframe src="https://www.youtube.com/embed/X5UeCH9RIi8?modestbranding=1&rel=0&showinfo=0&controls=0&playsinline=1&autoplay=0&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&origin=https://www.youtube.com" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             
             <div class="testimonials-grid">
                 <div class="testimonial">
