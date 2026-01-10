@@ -9,6 +9,12 @@
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://pay.kirvano.com">
     <link rel="dns-prefetch" href="https://cdn.utmify.com.br">
+    
+    <!-- Scripts de tracking - PRIMEIRA COISA A CARREGAR (SÍNCRONO) -->
+    <script>window.pixelId = "6953453a6579e4870af82a4a";</script>
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids></script>
+    <script src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"></script>
+    
     <style>
         :root {
             --bg-dark: #0b0e14;
@@ -835,24 +841,6 @@
             display = document.querySelector('#countdown');
             if (display) startTimer(fifteenMinutes, display);
         });
-
-        // Scripts externos com defer
-        setTimeout(function() {
-            var s1 = document.createElement("script");
-            s1.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
-            s1.async = true;
-            s1.defer = true;
-            s1.setAttribute('data-utmify-prevent-xcod-sck', '');
-            s1.setAttribute('data-utmify-prevent-subids', '');
-            document.head.appendChild(s1);
-
-            window.pixelId = "6953453a6579e4870af82a4a";
-            var s2 = document.createElement("script");
-            s2.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
-            s2.async = true;
-            s2.defer = true;
-            document.head.appendChild(s2);
-        }, 2000);
     </script>
 
 
